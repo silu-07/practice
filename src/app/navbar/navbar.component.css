@@ -55,3 +55,16 @@
   .toolbar #youtube-logo:hover {
     opacity: 0.8;
   }
+
+  .btn {
+    margin-right: 10px;
+  }
+
+  .active {
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+    /* background-color:#e7eaf6 !important; */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35) !important;
+  }

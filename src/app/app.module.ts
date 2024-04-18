@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { HomeComponent } from "./home/home/home.component";
+import { DefinitionsComponent } from "./definitions/definitions.component";
+import { CloudsComponent } from "./clouds/clouds.component";
 
 @NgModule({
     declarations: [
@@ -19,7 +21,9 @@ import { HomeComponent } from "./home/home/home.component";
         BrowserModule,
         AppRoutingModule,
         NavbarComponent,
-        HomeComponent
+        HomeComponent,
+        DefinitionsComponent,
+        CloudsComponent
     ]
 })
 export class AppModule { }
