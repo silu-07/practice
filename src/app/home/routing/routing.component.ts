@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-routing',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: './routing.component.html',
   styleUrl: './routing.component.css'
 })
-export class RoutingComponent {
+export class RoutingComponent implements OnInit {
+
+  @Input({
+    transform: (val: string) => Number(val)
+  }) id!: number;
+
+  ngOnInit() {
+    console.log(this.id);
+    console.log(typeof (this.id));
+  }
 
 }
