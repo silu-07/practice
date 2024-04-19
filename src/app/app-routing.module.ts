@@ -18,16 +18,14 @@ const routes: Routes = [
       return m.DefinitionsComponent;
     }
   },
-  {path: 'authentication/localstorage', component: AuthLocalStorageComponent},
-  {path: 'authentication/api', component: AuthApiComponent},
-  {path: 'authentication/api-token', component: AuthApiTokenComponent},
+  { path: 'authentication/localstorage', component: AuthLocalStorageComponent, title: 'Auth - Local Storage' },
+  { path: 'authentication/api', component: AuthApiComponent, title: 'Auth - Real API' },
+  { path: 'authentication/api-token', component: AuthApiTokenComponent, title: 'Auth - API + Token' },
   { path: '**', component: PagenotfoundComponent }
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MatButtonModule,
-
-  ],
+  imports: [RouterModule.forRoot(routes) ],
   exports: [RouterModule],
   providers: [
     provideRouter(routes, withComponentInputBinding())

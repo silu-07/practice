@@ -1,12 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #c9d6ff;
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+}
 
 .active {
-    font-weight: bold !important;
-    font-size: 16px !important;
-    text-decoration: underline !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35) !important;
-  }
+  font-weight: bold !important;
+  font-size: 16px !important;
+  text-decoration: underline !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35) !important;
+}

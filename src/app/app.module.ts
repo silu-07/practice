@@ -8,6 +8,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { HomeComponent } from "./home/home/home.component";
 import { DefinitionsComponent } from "./definitions/definitions.component";
 import { CloudsComponent } from "./clouds/clouds.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -17,13 +18,14 @@ import { CloudsComponent } from "./clouds/clouds.component";
         provideAnimationsAsync()
     ],
     bootstrap: [AppComponent],
-    imports: [
+    imports: [  
         BrowserModule,
         AppRoutingModule,
         NavbarComponent,
         HomeComponent,
         DefinitionsComponent,
-        CloudsComponent
+        CloudsComponent,
+        FormsModule,
     ]
 })
 export class AppModule { }
