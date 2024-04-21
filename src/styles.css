@@ -12,6 +12,8 @@ body {
   background: linear-gradient(to right, #e2e2e2, #c9d6ff);
 }
 
+/* active route link styling */
+
 .active {
   font-weight: bold !important;
   font-size: 16px !important;
@@ -19,3 +21,34 @@ body {
   transform: translateY(-1px) !important;
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35) !important;
 }
+
+/* Custom Snackbar Styling */
+
+.success-snackbar {
+  --mdc-snackbar-container-color: #02be6e;
+  margin-top: 65px !important;
+  /* --mat-mdc-snack-bar-button-color: white; */
+}
+
+.error-snackbar {
+  --mdc-snackbar-container-color: red;
+  margin-top: 65px !important;
+  /* --mat-mdc-snack-bar-button-color: white; */
+}
+
+.warning-snackbar {
+  --mdc-snackbar-container-color: #FFAD01;
+  margin-top: 65px !important;
+}
+
+/* For validation message */
+
+.error-message {
+  color: red;
+}
+
+/* Disable button  */
+
+/* .button-disable {
+  opacity: 0.3;
+} */

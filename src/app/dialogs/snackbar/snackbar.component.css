@@ -1,0 +1,18 @@
+.custom-snackbar {
+    display: flex;
+    align-items: center;
+}
+
+/* .custom-snackbar mat-icon {
+    font-size: 2rem;
+    height: 2rem;
+    width: 2rem;
+} */
+
+.spacer {
+    margin-left: auto;
+}
+
+a:hover {
+    cursor: pointer;
+}

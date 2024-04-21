@@ -2,16 +2,30 @@ import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LogInModel, SignUpModel } from '../user';
+import {
+  MatSnackBarAction,
+  MatSnackBarActions,
+  MatSnackBarLabel,
+} from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SnackbarServiceService } from 'src/app/dialogs/snackbar/snackbar-service.service';
 
 @Component({
   selector: 'app-auth-local-storage',
   standalone: true,
-  imports: [CommonModule, NgClass, FormsModule],
+  imports: [CommonModule, NgClass, FormsModule,
+    MatSnackBarAction,
+    MatSnackBarActions,
+    MatSnackBarLabel, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './auth-local-storage.component.html',
   styleUrl: './auth-local-storage.component.css'
 })
 
 export class AuthLocalStorageComponent {
+
+  constructor(public snackBarService: SnackbarServiceService) { }
 
   SignUpDivVisible: boolean = false;
 
@@ -24,11 +38,13 @@ export class AuthLocalStorageComponent {
       const users = JSON.parse(localUser);
       users.push(this.signUpObj);
       localStorage.setItem('angular17users', JSON.stringify(users));
+      this.snackBarService.openSnackBar('SingUp Successful', 'success');
       this.clearSingUpForm();
     } else {
-      const users = [];
+      const users = []; //If user is first entering into local storage
       users.push(this.signUpObj);
       localStorage.setItem('angular17users', JSON.stringify(users));
+      this.snackBarService.openSnackBar('SingUp Successful', 'success');
       this.clearSingUpForm();
     }
   }
@@ -39,11 +55,11 @@ export class AuthLocalStorageComponent {
       const users = JSON.parse(localUser);
       const isUserPresent = users.find((users: SignUpModel) => users.email == this.logInObj.email && users.password == this.logInObj.password);
       if (isUserPresent != undefined) {
-        alert('Successfully Logged in');
+        this.snackBarService.openSnackBar('Login Successful', 'success');
         this.clearLoginForm();
       }
       else {
-        alert('Please Sign Up First!');
+        this.snackBarService.openSnackBar('Please SignUp before login', 'warning');
         this.clearLoginForm();
       }
     }
