@@ -65,8 +65,8 @@
                     [ngClass]="password.invalid && (password.touched || password.dirty) ? 'error-border' : ''"
                     minlength="6" maxlength="16" required>
                 <div *ngIf="password.invalid && (password.touched || password.dirty)" class="error-message">
-                    <span *ngIf="password.errors?.['required']">Password is mandatory</span>
-                    <span *ngIf="password.errors?.['minlength']">Password min length should be 6</span>
+                    <span *ngIf="password.errors?.['required']">Password is mandatory !</span>
+                    <span *ngIf="password.errors?.['minlength']">Password min length should be 6 !</span>
                 </div>
                 <button type="submit" [disabled]="signUpForm.invalid"
                     [ngClass]="signUpForm.invalid ? 'button-disable' : ''">Sign Up</button>
