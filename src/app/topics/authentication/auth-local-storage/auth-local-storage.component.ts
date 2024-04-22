@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LogInModel, SignUpModel } from '../user';
 import {
@@ -11,7 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SnackbarServiceService } from 'src/app/dialogs/snackbar/snackbar-service.service';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-auth-local-storage',
@@ -19,7 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [CommonModule, NgClass, FormsModule,
     MatSnackBarAction,
     MatSnackBarActions,
-    MatSnackBarLabel, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
+    MatSnackBarLabel, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './auth-local-storage.component.html',
   styleUrl: './auth-local-storage.component.css'
 })
@@ -34,7 +33,6 @@ export class AuthLocalStorageComponent {
   logInObj: LogInModel = new LogInModel();
 
   @ViewChild("logInForm") logInFormRef!: NgForm;
-
 
   onSignUp() {
     const localUser = localStorage.getItem('angular17users');

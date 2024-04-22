@@ -17,7 +17,7 @@
                     pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[.]+[c]+[o]+[m]$">
                 <div *ngIf="email.invalid && (email.touched || email.dirty)" class="alert alert-danger">
                     <span *ngIf="email?.errors?.['required']">Email is Mandatory</span>
-                    <span *ngIf="email.errors?.['pattern']">Email is not invalid!</span>
+                    <span *ngIf="email.errors?.['pattern']">Email is not valid!</span>
                 </div>
 
                 <input type="password" class="form-control" placeholder="Password" #password="ngModel" name="password"
@@ -65,5 +65,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
