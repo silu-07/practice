@@ -39,7 +39,7 @@ body {
   margin-top: 65px !important;
 }
 
-/* For validation message */
+/* For validation message & border color */
 
 .error-message {
   color: red;

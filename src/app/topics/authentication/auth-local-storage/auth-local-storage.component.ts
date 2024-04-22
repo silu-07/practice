@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, viewChild, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LogInModel, SignUpModel } from '../user';
 import {
@@ -29,25 +29,35 @@ export class AuthLocalStorageComponent {
 
   SignUpDivVisible: boolean = false;
 
-  signUpObj: SignUpModel = new SignUpModel();
   logInObj: LogInModel = new LogInModel();
+  signUpObj: SignUpModel = new SignUpModel();
 
   @ViewChild("logInForm") logInFormRef!: NgForm;
+  @ViewChild("signUpForm") signUpFormRef!: NgForm;
+
 
   onSignUp() {
     const localUser = localStorage.getItem('angular17users');
-    if (localUser != null) { //If already sign up users are present
+    if (localUser == null) {
+      const users = []; //If local storage usres array is empty
+      users.push(this.signUpObj);
+      localStorage.setItem('angular17users', JSON.stringify(users));
+      this.snackBarService.openSnackBar('SingUp Successful', 'success');
+      this.clearSingUpForm();
+    }
+    else if (localUser != null) { //if user is already sign up
       const users = JSON.parse(localUser);
-      users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users));
-      this.snackBarService.openSnackBar('SingUp Successful', 'success');
-      this.clearSingUpForm();
-    } else {
-      const users = []; //If user is first entering into local storage
-      users.push(this.signUpObj);
-      localStorage.setItem('angular17users', JSON.stringify(users));
-      this.snackBarService.openSnackBar('SingUp Successful', 'success');
-      this.clearSingUpForm();
+      const isUserPresent = users.find((users: SignUpModel) => users.email == this.signUpObj.email);
+      if (isUserPresent != undefined) {
+        this.snackBarService.openWarningSnackBar('User is already present in storage!', 'warning');
+      }
+      else {
+        //if in local storage already other sign up users are present & we are making new entry
+        users.push(this.signUpObj);
+        localStorage.setItem('angular17users', JSON.stringify(users));
+        this.snackBarService.openSnackBar('SingUp Successful', 'success');
+        this.clearSingUpForm();
+      }
     }
   }
 
@@ -72,8 +82,6 @@ export class AuthLocalStorageComponent {
   }
 
   clearSingUpForm() {
-    this.signUpObj.name = '';
-    this.signUpObj.email = '';
-    this.signUpObj.password = '';
+    this.signUpFormRef.reset();
   }
 }
