@@ -47,8 +47,21 @@ body {
   color: red;
 }
 
+.success-message {
+  color: #02be6e;
+}
+
+.error-border {
+  border: 2px solid #a94442 !important;
+}
+
+.success-border {
+  border: 2px solid #02be6e !important;
+}
+
 /* Disable button  */
 
-/* .button-disable {
+.button-disable {
   opacity: 0.3;
-} */
+  pointer-events: none;
+}

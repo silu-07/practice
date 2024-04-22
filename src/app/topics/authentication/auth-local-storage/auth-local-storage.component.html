@@ -1,5 +1,39 @@
 <div class="body">
     <div class="container" [ngClass]="SignUpDivVisible ? 'active' : '' " id="container">
+
+        <div class="form-container log-in" *ngIf="!SignUpDivVisible">
+            <form #logInForm="ngForm" (ngSubmit)="onLogIn()">
+                <h1>Log In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email password</span>
+                <input type="email" class="form-control" placeholder="Email" #email="ngModel" name="email"
+                    [(ngModel)]="logInObj.email"
+                    [ngClass]="email.invalid && (email.touched || email.dirty) ? 'error-border': '' " required
+                    pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[.]+[c]+[o]+[m]$">
+                <div *ngIf="email.invalid && (email.touched || email.dirty)" class="alert alert-danger">
+                    <span *ngIf="email?.errors?.['required']">Email is Mandatory</span>
+                    <span *ngIf="email.errors?.['pattern']">Email is not invalid!</span>
+                </div>
+
+                <input type="password" class="form-control" placeholder="Password" #password="ngModel" name="password"
+                    [(ngModel)]="logInObj.password"
+                    [ngClass]="password.invalid && (password.touched || password.dirty) ? 'error-border': '' " required
+                    minlength="3" maxlength="14">
+                <div *ngIf="password.invalid && (password.touched || password.dirty)" class="alert alert-danger">
+                    <span *ngIf="password?.errors?.['required']">Password is Mandatory</span>
+                    <span *ngIf="password.errors?.['minlength']">Min password Length should be 3</span>
+                </div>
+                <a href="#">→ Forget Your Password? ←</a>
+                <button type="submit" [disabled]="logInForm.invalid"
+                    [ngClass]="logInForm.invalid ? 'button-disable' : ''">Log In</button>
+            </form>
+        </div>
+
         <div class="form-container sign-up" *ngIf="SignUpDivVisible">
             <form>
                 <h1>Create Account</h1>
@@ -16,29 +50,12 @@
                 <button (click)="onSignUp()">Sign Up</button>
             </form>
         </div>
-        <div class="form-container sign-in" *ngIf="!SignUpDivVisible">
-            <form>
-                <h1>Log In</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email password</span>
-                <input type="email" placeholder="Email" #email="ngModel" name="email" [(ngModel)]="logInObj.email"
-                    required>
-                <input type="password" placeholder="Password" #password="ngModel" name="password"
-                    [(ngModel)]="logInObj.password" required>
-                <a href="#">→ Forget Your Password? ←</a>
-                <button (click)="onLogIn();">Log In</button>
-            </form>
-        </div>
+
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
                     <h1>Hello, Friend!</h1>
-                    <p>Register with your personal details to enjoy our  all of site features..</p>
+                    <p>Register with your personal details to enjoy our all of site features..</p>
                     <button class="hidden" id="login" (click)="SignUpDivVisible = false">Log In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
