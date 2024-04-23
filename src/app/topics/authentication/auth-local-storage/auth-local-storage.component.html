@@ -16,7 +16,7 @@
                     [ngClass]="email.invalid && (email.touched || email.dirty) ? 'error-border': '' " required
                     pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[.]+[c]+[o]+[m]$">
                 <div *ngIf="email.invalid && (email.touched || email.dirty)" class="error-message">
-                    <span *ngIf="email?.errors?.['required']">Email 12 is Mandatory !</span>
+                    <span *ngIf="email?.errors?.['required']">Email ab is Mandatory !</span>
                     <span *ngIf="email.errors?.['pattern']">Email is not valid !</span>
                 </div>
 
