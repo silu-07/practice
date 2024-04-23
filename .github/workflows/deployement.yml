@@ -3,14 +3,12 @@
 
 name: Angular App Deploy
 
- on:
+on:
   push:
-    branches:
-      - features/ng-17-practice  # You can specify the branch you want to trigger the workflow on
+    branches: [ "features/ng-17-practice" ]
+  pull_request:
+    branches: [ "features/ng-17-practice" ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -27,5 +25,5 @@ jobs:
       - name: Build Angular project
         run: ng build --prod
 
-      # - name: Run tests
-      #   run: ng test
+      - name: Run tests
+        run: ng test
