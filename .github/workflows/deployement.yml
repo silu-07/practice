@@ -27,5 +27,5 @@ jobs:
         node-version: 21
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --output-path docs --base-href practice
+    - run: npm run build --output-path docs
     # - run: npm test
